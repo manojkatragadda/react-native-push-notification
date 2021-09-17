@@ -467,8 +467,8 @@ public class RNPushNotificationHelper {
                 if (vibration == 0)
                     vibration = DEFAULT_VIBRATION;
 
-                vibratePattern = new long[]{0, vibration};
-
+                // vibratePattern = new long[]{0, vibration};
+                vibratePattern = new long[]{ 0, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000 };
                 notification.setVibrate(vibratePattern); 
             }
 
