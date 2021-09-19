@@ -52,7 +52,7 @@ import static com.dieam.reactnativepushnotification.modules.RNPushNotification.K
 public class RNPushNotificationHelper {
     public static final String PREFERENCES_KEY = "rn_push_notification";
     private static final long DEFAULT_VIBRATION = 300L;
-
+    private static final long[] VIBRATION_PATTERN = new long[]{ 0, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000,};
     private Context context;
     private RNPushNotificationConfig config;
     private final SharedPreferences scheduledNotificationsPersistence;
@@ -468,7 +468,7 @@ public class RNPushNotificationHelper {
                     vibration = DEFAULT_VIBRATION;
 
                 // vibratePattern = new long[]{0, vibration};
-                vibratePattern = new long[]{ 0, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000 };
+                vibratePattern = VIBRATION_PATTERN;
                 notification.setVibrate(vibratePattern); 
             }
 
@@ -935,7 +935,7 @@ public class RNPushNotificationHelper {
         String soundName = channelInfo.hasKey("soundName") ? channelInfo.getString("soundName") : "default";
         int importance = channelInfo.hasKey("importance") ? channelInfo.getInt("importance") : 4;
         boolean vibrate = channelInfo.hasKey("vibrate") && channelInfo.getBoolean("vibrate");
-        long[] vibratePattern = vibrate ? new long[]{ 0, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000 } : null;
+        long[] vibratePattern = vibrate ? VIBRATION_PATTERN : null;
         NotificationManager manager = notificationManager();
 
         Uri soundUri = playSound ? getSoundUri(soundName) : null;
